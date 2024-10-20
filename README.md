@@ -11,11 +11,10 @@ This project compares the A* and BFS pathfinding algorithms, implemented in Java
 - Real-time visual updates as the pathfinding progresses.
 
 ## How to Run
-1. Run the `Main` class.
-2. When prompted, input the desired node pixel size (between 10 and 60).
-3. The main window will open, displaying two grid panels and control options.
-4. Click on the grid to set the start and finish nodes (applies to both grids).
-5. Use the checkboxes to select either A* or BFS for each grid.
-6. Press the "Start Algorithms" button to begin the pathfinding.
-7. Track search time, nodes searched, and path length in the information panels below the grids.
-8. Use the "Reset" button to reset the grids, or the "Reset Wall" button to clear any walls.
+1. input the desired node pixel size (between 10 and 60).
+2. The main window will open, displaying two grid panels and control options.
+3. Click on the grid to set the start and finish nodes (applies to both grids).
+4. Use the checkboxes to select either A* or BFS for each grid.
+5. Press the "Start Algorithms" button to begin the pathfinding.
+6. Track search time, nodes searched, and path length in the information panels below the grids.
+7. Use the "Reset" button to reset the grids, or the "Reset Wall" button to clear any walls.
