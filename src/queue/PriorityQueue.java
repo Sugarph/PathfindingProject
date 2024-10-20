@@ -3,9 +3,9 @@ package queue;
 import pathfinding.Node;
 
 public class PriorityQueue {
-    private Node[] queue;
+    private final Node[] queue;
     private int currentSize;
-    private int maxSize;
+    private final int maxSize;
 
     public PriorityQueue(int maxSize) {
         this.maxSize = maxSize;

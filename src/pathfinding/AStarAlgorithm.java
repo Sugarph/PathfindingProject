@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class AStarAlgorithm {
     private final Node finish;
-    private Node[][] nodes;
+    private final Node[][] nodes;
     private final int maxCol, maxRow;
     private boolean goalReached;
-    private PriorityQueue openList;
-    private ArrayList<Node> checkedList;
+    private final PriorityQueue openList;
+    private final ArrayList<Node> checkedList;
     private final GridPanel gridPanel;
 
     public AStarAlgorithm(Node[][] nodes, Node start, Node finish, int maxCol, int maxRow, GridPanel gridPanel) {

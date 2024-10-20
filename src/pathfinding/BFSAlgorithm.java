@@ -4,12 +4,12 @@ import queue.Deque;
 import java.util.ArrayList;
 
 public class BFSAlgorithm {
-    private Node finish;
-    private Node[][] nodes;
+    private final Node finish;
+    private final Node[][] nodes;
     private final int maxCol, maxRow;
     private boolean goalReached;
     private final Deque queue; // Use as normal queue
-    private ArrayList<Node> checkedList;
+    private final ArrayList<Node> checkedList;
     private final GridPanel gridPanel;
 
     public BFSAlgorithm(Node[][] nodes, Node start, Node finish, int maxCol, int maxRow, GridPanel gridPanel) {

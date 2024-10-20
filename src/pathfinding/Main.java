@@ -39,7 +39,7 @@ public class Main {
 
         JCheckBox switchAlgo1 = new JCheckBox("Use BFS");
         switchAlgo1.setBackground(Color.lightGray);
-        switchAlgo1.addActionListener(e -> {
+        switchAlgo1.addActionListener(_ -> {
             if (switchAlgo1.isSelected()) {
                 gridPanel1.setAlgorithmType("BFS");
             } else {
@@ -73,7 +73,7 @@ public class Main {
 
         JCheckBox switchAlgo2 = new JCheckBox("Use BFS");
         switchAlgo2.setBackground(Color.lightGray);
-        switchAlgo2.addActionListener(e -> {
+        switchAlgo2.addActionListener(_ -> {
             if (switchAlgo2.isSelected()) {
                 gridPanel2.setAlgorithmType("BFS");
             } else {
@@ -106,7 +106,7 @@ public class Main {
 
         //Start Button
         JButton startButtonBoth = new JButton("Start Algorithms");
-        startButtonBoth.addActionListener(e -> {
+        startButtonBoth.addActionListener(_ -> {
             if (!gridPanel1.isRunning && !gridPanel2.isRunning || !gridPanel1.isFinished || !gridPanel2.isFinished) {
                 gridPanel1.startPathfinding();
                 gridPanel2.startPathfinding();
@@ -115,7 +115,7 @@ public class Main {
 
         //Reset Button
         JButton resetButton = new JButton("Reset");
-        resetButton.addActionListener(e -> {
+        resetButton.addActionListener(_ -> {
             gridPanel1.reset();
             gridPanel2.reset();
             timeLabel1.setText("Time: 0 ms");
@@ -124,7 +124,7 @@ public class Main {
 
         //Reset All Button
         JButton resetWallButton = new JButton("Reset Wall");
-        resetWallButton.addActionListener(e -> {
+        resetWallButton.addActionListener(_ -> {
             gridPanel1.resetWall();
             gridPanel2.resetWall();
             timeLabel1.setText("Time: 0 ms");
@@ -132,7 +132,7 @@ public class Main {
         });
 
         //Update Info
-        Timer updateTimer = new Timer(25, e -> {
+        Timer updateTimer = new Timer(25, _ -> {
             boolean gridPanel1Ready = gridPanel1.startNode != null && gridPanel1.finishNode != null;
             boolean gridPanel2Ready = gridPanel2.startNode != null && gridPanel2.finishNode != null;
             boolean isReady = gridPanel1Ready && gridPanel2Ready && !gridPanel1.isRunning && !gridPanel2.isRunning;

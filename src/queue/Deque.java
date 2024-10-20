@@ -3,9 +3,9 @@ package queue;
 import pathfinding.Node;
 
 public class Deque {
-    private Node[] deque;
+    private final Node[] deque;
     private int currentSize;
-    private int maxSize;
+    private final int maxSize;
 
     public Deque(int maxSize) {
         this.maxSize = maxSize;

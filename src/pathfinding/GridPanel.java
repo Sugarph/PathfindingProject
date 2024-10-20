@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class GridPanel extends JPanel {
     public Node[][] nodes;
-    private int maxCol, maxRow;
+    private final int maxCol, maxRow;
     private AStarAlgorithm aStarAlgorithm;
     private BFSAlgorithm bfsAlgorithm;
     private Timer timer;
@@ -17,7 +17,7 @@ public class GridPanel extends JPanel {
     public double timeUse;
     private GridPanel otherGridPanel;
     private boolean useBFS;
-    private Deque traceQueue;
+    private final Deque traceQueue;
     public int nodeSearched, pathLength;
 
     GridPanel(int nodeSize) {
