@@ -1,7 +1,7 @@
 # Pathfinding Comparison Project
 
 ## Overview
-This project compares the A* and BFS pathfinding algorithms, implemented in Java. Initially, it was designed for a Data Structures and Algorithms subject assignment to demonstrate priority queues and double-ended queues. However, as the project evolved, it grew beyond the assignment’s scope and has since become a standalone effort.
+This project compares the A* and BFS pathfinding algorithms, implemented in Java.
 
 ## Features
 - Two side-by-side grids for algorithm comparison.
@@ -18,3 +18,7 @@ This project compares the A* and BFS pathfinding algorithms, implemented in Java
 5. Press the "Start Algorithms" button to begin the pathfinding.
 6. Track search time, nodes searched, and path length in the information panels below the grids.
 7. Use the "Reset" button to reset the grids, or the "Reset Wall" button to clear any walls.
+
+## Note
+Initially, this project was designed for a Data Structures and Algorithms assignment about priority queues and double-ended queues. However, it grew beyond the scope of the assignment, so I decided to turn it into a separate project.
+
