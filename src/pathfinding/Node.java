@@ -17,7 +17,6 @@ public class Node extends JButton implements ActionListener {
     public int hCost;
     public int col;
     public int row;
-
     private final GridPanel gridPanel;
 
     public Node(int col, int row, GridPanel gridPanel) {
@@ -27,7 +26,6 @@ public class Node extends JButton implements ActionListener {
         setBorder(BorderFactory.createLineBorder(Color.lightGray));
         addActionListener(this);
         this.gridPanel = gridPanel;
-
     }
 
     public void setStartPoint() {
