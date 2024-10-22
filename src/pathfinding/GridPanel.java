@@ -8,15 +8,14 @@ public class GridPanel extends JPanel {
     public Node[][] nodes;
     private final int maxCol, maxRow;
     private AStarAlgorithm aStarAlgorithm;
-    private BFSAlgorithm bfsAlgorithm;
+    private MazeDFSAlgorithm dfsMaze;
     private Timer timer;
     public Node startNode, finishNode;
     public boolean isRunning;
     public boolean isFinished;
+    public boolean maze;
     private double startTime;
     public double timeUse;
-    private GridPanel otherGridPanel;
-    private boolean useBFS;
     private final Deque traceQueue;
     public int nodeSearched, pathLength;
 
@@ -32,7 +31,7 @@ public class GridPanel extends JPanel {
         pathLength = 0;
         isRunning = false;
         isFinished = false;
-        useBFS = false;
+        maze = false;
 
         //Create grid of node
         for (int col = 0; col < maxCol; col++) {
@@ -44,15 +43,11 @@ public class GridPanel extends JPanel {
         }
     }
 
-    public void setOtherGridPanel(GridPanel otherGridPanel) {
-        this.otherGridPanel = otherGridPanel;
-    }
-
     public void setAlgorithmType(String algorithm) {
-        if (algorithm.equals("BFS")) {
-            useBFS = true;
+        if (algorithm.equals("maze")) {
+            maze = true;
         } else if (algorithm.equals("A*")) {
-            useBFS = false;
+            maze = false;
         }
     }
 
@@ -60,14 +55,27 @@ public class GridPanel extends JPanel {
         if (isRunning) return;
         isRunning = true;
         startTime = System.currentTimeMillis();
-
-        if (useBFS) {
-            bfsAlgorithm = new BFSAlgorithm(nodes, startNode, finishNode, maxCol, maxRow, this);
-            startBFS();
+        if (maze) {
+            dfsMaze = new MazeDFSAlgorithm(nodes, startNode, maxCol, maxRow);
+            startMaze();
         } else {
             aStarAlgorithm = new AStarAlgorithm(nodes, startNode, finishNode, maxCol, maxRow, this);
             startAStar();
         }
+    }
+    private void startMaze() {
+        timer = new Timer(25, e -> {
+            timeUse = System.currentTimeMillis() - startTime;
+            dfsMaze.generateMazeStep();
+            repaint();
+            if (dfsMaze.isFinished()) {
+                ((Timer) e.getSource()).stop();
+                finishNode = dfsMaze.finishNode;
+                isRunning = false;
+            }
+
+        });
+        timer.start();
     }
 
     private void startAStar() {
@@ -86,22 +94,6 @@ public class GridPanel extends JPanel {
         timer.start();
     }
 
-    private void startBFS() {
-        timer = new Timer(25, e -> {
-            timeUse = System.currentTimeMillis() - startTime;
-            bfsAlgorithm.BFS();
-            repaint();
-
-            if (bfsAlgorithm.isGoalReached()) {
-                ((Timer) e.getSource()).stop();
-                tracePath(finishNode);
-            } else if (bfsAlgorithm.failToReach()) {
-                reset();
-            }
-        });
-        timer.start();
-    }
-
     private void tracePath(Node finishNode) {
         Node current = finishNode;
         while (current != null) {
@@ -111,7 +103,7 @@ public class GridPanel extends JPanel {
         traceQueue.showDeque();
 
         //set path from both way
-        Timer traceTimer = new Timer(25, e -> {
+        Timer traceTimer = new Timer(5, e -> {
             if (!traceQueue.isEmpty()) {
                 Node frontNode = traceQueue.removeFirst();
                 frontNode.setPath();
@@ -165,7 +157,4 @@ public class GridPanel extends JPanel {
         isFinished = false;
     }
 
-    public void otherNodePressed(int col, int row) {
-        otherGridPanel.nodes[col][row].buttonPressed();
-    }
 }

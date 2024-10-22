@@ -18,6 +18,7 @@ public class Node extends JButton implements ActionListener {
     public int col;
     public int row;
     private final GridPanel gridPanel;
+    public boolean visited;
 
     public Node(int col, int row, GridPanel gridPanel) {
         this.col = col;
@@ -26,6 +27,7 @@ public class Node extends JButton implements ActionListener {
         setBorder(BorderFactory.createLineBorder(Color.lightGray));
         addActionListener(this);
         this.gridPanel = gridPanel;
+        visited = false;
     }
 
     public void setStartPoint() {
@@ -41,7 +43,7 @@ public class Node extends JButton implements ActionListener {
     }
 
     public void toggleWall() {
-        if (finishPoint || startPoint || open || searched) {
+        if (open || searched) {
             return;
         }
         wall = !wall;
@@ -106,6 +108,5 @@ public class Node extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (gridPanel.isRunning) {return;}
         buttonPressed();
-        gridPanel.otherNodePressed(col, row);
     }
 }
